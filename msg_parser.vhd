@@ -39,13 +39,13 @@ architecture rtl_msg_parser of msg_parser is
     signal consumed_bytes             : integer range 0 to MAX_MSG_BYTES;                -- number of msg data bytes since beginning of the message
     signal avail_data_bytes           : integer range 0 to 2*8;                          -- number of available msg data bytes (no msg count and no msg length bytes)
     signal leftover_bytes             : integer range 0 to 2*8;                          -- number of leftover bytes from last word of previous message 
-	signal s_tdata_max_msg_bytes      : std_logic_vector(8*MAX_MSG_BYTES+32-1 downto 0); -- MSB is 64 bits input data and rest is 0s
+    signal s_tdata_max_msg_bytes      : std_logic_vector(8*MAX_MSG_BYTES+32-1 downto 0); -- MSB is 64 bits input data and rest is 0s
 
     -------------
     -- Stage 1 --
     -------------
     signal s_tdata_buff               : std_logic_vector(63 downto 0);                    -- buffer last word of message
-	signal s_tdata_buff_max_msg_bytes : std_logic_vector(8*MAX_MSG_BYTES+32-1 downto 0);
+    signal s_tdata_buff_max_msg_bytes : std_logic_vector(8*MAX_MSG_BYTES+32-1 downto 0);
     signal avail_data                 : std_logic_vector(8*MAX_MSG_BYTES-1 downto 0);     -- store available msg data
     signal calc_msg_length            : std_logic;                                        -- trigger the calculation of msg length 
     signal msg_count_s1               : std_logic_vector(15 downto 0);
@@ -57,9 +57,9 @@ architecture rtl_msg_parser of msg_parser is
 	 -------------
     -- Stage 2 --
     -------------
-	 signal msg_data_s2               : std_logic_vector(8*MAX_MSG_BYTES-1 downto 0);
-	 signal msg_valid_s2              : std_logic;
-	 signal msg_length_s2             : std_logic_vector(15 downto 0);
+    signal msg_data_s2                : std_logic_vector(8*MAX_MSG_BYTES-1 downto 0);
+    signal msg_valid_s2               : std_logic;
+    signal msg_length_s2              : std_logic_vector(15 downto 0);
 
 begin
 
